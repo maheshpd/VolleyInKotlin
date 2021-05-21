@@ -3,6 +3,7 @@ package com.createsapp.volleyinkotlin
 import android.os.Bundle
 import androidx.appcompat.app.AppCompatActivity
 import com.android.volley.Request
+import com.android.volley.RequestQueue
 import com.android.volley.Response
 import com.android.volley.toolbox.StringRequest
 import com.android.volley.toolbox.Volley
@@ -11,6 +12,9 @@ import org.json.JSONArray
 import org.json.JSONObject
 
 class MainActivity : AppCompatActivity() {
+
+    private var requestQueue: RequestQueue?=null
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
@@ -41,6 +45,9 @@ class MainActivity : AppCompatActivity() {
         }, Response.ErrorListener {
             tv_user.text = "That didn't work!"
         })
+
+        requestQueue!!.add(stringReq)
+
     }
 
 
